@@ -169,9 +169,14 @@ namespace fmnext
             return final_result;
         }
 
-        std::unordered_map<std::string, std::filesystem::path> GetThumbnail(const std::filesystem::path& input_path)
+        static std::array<std::string, 2> GetThumbnailNames(const std::filesystem::path& input_path)
         {
-            std::unordered_map<std::string, std::filesystem::path> result{};
+            return std::array<std::string, 2>{ input_path.filename().replace_extension().string() + "_Big.swatchbin", input_path.filename().replace_extension().string() + "_Small.swatchbin" };
+        }
+
+        std::vector<std::filesystem::path> GetResourceContainer(const std::filesystem::path& input_path)
+        {
+            std::vector<std::filesystem::path> result{};
             std::filesystem::path path(m_base);
 
             std::smatch match_result;
@@ -192,8 +197,12 @@ namespace fmnext
 
                 path.make_preferred();
 
-                result.try_emplace(input_path.filename().replace_extension().string() + "_Big.swatchbin", std::filesystem::path(path.parent_path().string() + "HiRes.zip"));
-                result.try_emplace(input_path.filename().replace_extension().string() + "_Small.swatchbin", path.parent_path().replace_extension(".zip"));
+                if (auto HiRes = std::filesystem::path(path.parent_path().string() + "HiRes.zip"); std::filesystem::exists(HiRes))
+                {
+                    result.push_back(std::filesystem::path(path.parent_path().string() + "HiRes.zip"));
+                }
+                
+                result.push_back(path.parent_path().replace_extension(".zip"));
 
                 break;
             }
@@ -206,7 +215,7 @@ namespace fmnext
                 else {
                     path /= std::filesystem::path("media"); // Motorsport V1
                 }
-                
+
                 for (auto it = std::next(std::find(input_path.begin(), input_path.end(), match_result.str()), 1); it != std::end(input_path); ++it)
                 {
                     path /= *it;
@@ -214,8 +223,7 @@ namespace fmnext
 
                 path.make_preferred();
 
-                result.try_emplace(input_path.filename().replace_extension().string() + "_big.swatchbin", path.parent_path().replace_extension(".zip"));
-                result.try_emplace(input_path.filename().replace_extension().string() + "_small.swatchbin", path.parent_path().replace_extension(".zip"));
+                result.push_back(path.parent_path().replace_extension(".zip"));
 
                 break;
             }
