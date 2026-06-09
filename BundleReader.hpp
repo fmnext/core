@@ -521,9 +521,11 @@ namespace fmnext
 				LOD2(((value >> 3) & 0x1)),
 				LOD3(((value >> 4) & 0x1)),
 				LOD4(((value >> 5) & 0x1)),
-				LOD5(((value >> 6) & 0x1)) {
+				LOD5(((value >> 6) & 0x1)),
+				flags(value) {
 			}
 
+			uint16_t flags;
 			bool LODS;
 			bool LOD0;
 			bool LOD1;
