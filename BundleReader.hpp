@@ -488,27 +488,24 @@ namespace fmnext
 	class BundleReader
 	{
 	public:
-
 		BundleReader() = default;
+		~BundleReader() = default;
 
 		BundleReader(const std::string& filename)
 		{
 			p_stream = std::make_unique<std::ifstream>(filename, std::ios::binary | std::ios::in);
 		}
 
-		[[deprecated("Not ready for use.")]]
 		BundleReader(void* data, size_t size)
 		{
+			p_buffer = std::make_unique<mbuff>(reinterpret_cast<char*>(data), reinterpret_cast<char*>(data) + size);
+			p_stream = std::make_unique<std::istream>(p_buffer.get(), false);
 		}
 
 		BundleReader(std::vector<char>& data)
 		{
 			p_buffer = std::make_unique<mbuff>(data);
 			p_stream = std::make_unique<std::istream>(p_buffer.get(), false);
-		}
-
-		~BundleReader()
-		{
 		}
 
 		struct LODFlags {
