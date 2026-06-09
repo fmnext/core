@@ -771,6 +771,7 @@ namespace fmnext
 		{
 			Version version;
 			std::optional<uint32_t> material_index_mask;
+			std::optional<std::vector<std::string>> masks;
 			DirectX::XMFLOAT3 preview_color;
 			std::string path;
 		};
@@ -2141,12 +2142,17 @@ namespace fmnext
 						material_index_mask = this->Read<uint16_t>(); // unsigned short
 					}
 
+					std::vector<std::string> masks{};
+
 					if (IsAtLeastVersion(blobHeader.version, 2, 0))
 					{
+						masks.reserve(material_index_mask);
+
 						for (size_t mask_id = 0; mask_id < material_index_mask; ++mask_id)
 						{
 							int32_t path_len = this->read7BitEncodedInteger();
-							std::string path = this->ReadString(path_len);
+							//std::string path = this->ReadString(path_len);
+							masks.emplace_back(this->ReadString(path_len));
 						}
 					}
 
@@ -2156,7 +2162,7 @@ namespace fmnext
 					int32_t path_len = this->read7BitEncodedInteger();
 					std::string path = this->ReadString(path_len);
 
-					data[i].push_back({ blobHeader.version, material_index_mask, preview_color, path });
+					data[i].push_back({ blobHeader.version, material_index_mask, std::make_optional(masks), preview_color, path });
 				}
 
 				if (IsAtLeastVersion(blobHeader.version, 2, 0))
