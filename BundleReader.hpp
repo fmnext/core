@@ -90,18 +90,25 @@ namespace fmnext
 			// float4 - ParameterConstantBuffer
 		case 0xEA718FBE: // carpaint_standard
 			return "UniqueBaseColorColorParam";
+
 		case 0x0014A502:
 			return "PaintColorGroupColorParam";
+
 		case 0xC0CB2820:
 			return "PaintColorColorParam";
+
 		case 0xA415641F:
 			return "PaintFlakeF0Vector4";
+
 		case 0x3FA9F5C9:
 			return "PaintFinishColorParam";
+
 		case 0x1BB17DD2:
 			return "radColour1ColorParam_pg_radiosity";
+
 		case 0x43AFD4FA:
 			return "radColour2ColorParam_pg_radiosity";
+
 		case 0xC28AB1DD:
 			return "radColour3ColorParam_pg_radiosity";
 
@@ -110,27 +117,34 @@ namespace fmnext
 
 		case 0x63040D89: // badge_clc_diffusemetallerpch1masknorm
 			return "DiffuseColorColorParam";
+
 		case 0x1F9B6488:
 			return "F0aVector4";
+
 		case 0x9114636B:
 			return "F0bVector4";
+
 		case 0x23C8B47A:
 			return "ClearCoatF0Vector4";
 
 		case 0xF51639BE: // badge_ch1difnormglossao
 			return "DiffuseColorGroupColorParam";
+
 		case 0x0E29312A:
 			return "ReflectionTintColorParam";
 
 		case 0x57C321A6: // simplediffuse
 			return "ColorColorParam";
+
 		case 0x938926B0:
 			return "F0Vector4";
 
 		case 0x73A9E2DF: // clc_metalch2normalch1mask
 			return "ColorGroupColorParam";
+
 		case 0x0B379E68:
 			return "CarbonClearCoatColorParam";
+
 		case 0xC308C931:
 			return "IlluminationColoColorParam";
 
@@ -142,36 +156,53 @@ namespace fmnext
 
 		case 0xEF5CCE09: // ch2diffnormglossalphaemissive
 			return "DiffuseColorAColorParam";
+
 		case 0x76BEA808:
 			return "DiffuseColorBColorParam";
 
 		case 0xC017A27E: // ch1ch2normlerpch1glossdiff
 			return "ReflectionTintColorColorParam";
 
+		case 0x8467AAA4: // car_window_interior
+			return "g_CarUserColor0";
+
+		case 0x1F30F777:
+			return "GlassColor0ColorParam";
+
+		case 0x108D7FE5:
+			return "CrackF0Vector4";
+
 			// float2
 		case 0x1CE52912: // carpaint_standard
 			return "OrangePeelTiling";
+
 		case 0x8ED8D865:
 			return "FlakeNormalTiling";
 
 		case 0x46E92CB5: // badge_clc_diffusemetallerpch1masknorm
 			return "CH1MaskTiling";
+
 		case 0x730F2086:
 			return "NormalTiling";
 
 		case 0xC19C70CD: // badge_ch1difnormglossao
 			return "DiffuseATiling";
+
 		case 0x3EC91ED5:
 			return "GlossTiling";
+
 		case 0xCB4FD76E:
 			return "RTintTiling";
+
 		case 0x75D6E294:
 			return "LocalAOTiling";
 
 		case 0x519B26A1: // clc_metalch2normalch1mask
 			return "CH2DiffuseTextureTiling";
+
 		case 0x53372732:
 			return "CH2RTintTiling";
+
 		case 0xB879D9F0:
 			return "LightMapTiling";
 
@@ -180,77 +211,110 @@ namespace fmnext
 
 		case 0x8591411B: // ch1ch2normlerpch1glossdiff
 			return "CH1GlossDiffMaskTiling";
+
 		case 0x114A45A9:
 			return "CH2NormalTiling";
+
 		case 0xAC802967:
 			return "CH1NormalTiling";
+
 		case 0x0222B0B9:
 			return "CH1NormalMaskTiling";
+
 		case 0x2F354D91:
 			return "AOTiling";
+
+		case 0x548284FC: // car_cf_embossed_interior
+			return "CH1_CLCNormalMap0Tiling";
 
 			// float
 		case 0x74226C85: // carpaint_standard
 			return "BaseCoatScalar_floatVal";
+
 		case 0xA2896771:
 			return "stepMinRimSideAngle_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0x193593DA:
 			return "stepMaxRimSideAngle_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0x8CF21130:
 			return "lerpMinRimSideAngle_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0x374EE59B:
 			return "lerpMaxRimSideAngle_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0x8EDE2B71:
 			return "stepMinRimMask_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0xB893E9E2:
 			return "stepMaxRimMask_floatVal_surfaceFX_snow_surfaceFX";
+
 		case 0x86EF8FB1:
 			return "FlakeAmount_floatVal";
+
 		case 0x3F770DFC:
 			return "CH1NormalHeightScale";
+
 		case 0xA49CC530:
 			return "OrangePeelHeightScale";
+
 		case 0xC8C003A0:
 			return "RainUVScale_floatVal_basewaterbeading_uvrot0";
+
 		case 0x33E9FD2B:
 			return "DirectionalFalloff_Offset_floatVal_basewaterbeading_uvrot0";
+
 		case 0xB7BB947A:
 			return "DirectionalFalloff_Tightness_floatVal_basewaterbeading_uvrot0";
+
 		case 0x99CC69B1:
 			return "FlakeGloss_floatVal";
+
 		case 0x2A57C2B6:
 			return "FlakeNormalIntensity_floatVal";
+
 		case 0x18F91688:
 			return "PaintType_floatVal";
+
 		case 0x8F88A8DD:
 			return "radEV1_floatVal_pg_radiosity";
+
 		case 0xF96D91E0:
 			return "radEV2_floatVal_pg_radiosity";
+
 		case 0x621E7B34:
 			return "radEV3_floatVal_pg_radiosity";
 
 		case 0xD6B74780: // carpaint_standard_glossmask
 			return "FlakeAmountB_floatVal";
+
 		case 0xA75C82D2:
 			return "RainUVScale_floatVal_basewaterbeading";
+
 		case 0x2C6CEF66:
 			return "DirectionalFalloff_Offset_floatVal_basewaterbeading";
+
 		case 0xA9383667:
 			return "DirectionalFalloff_Tightness_floatVal_basewaterbeading";
+
 		case 0xD6A86466:
 			return "FlakeGlossB_floatVal";
 
 		case 0xBB022974: // badge_clc_diffusemetallerpch1masknorm
 			return "NormalHeightScale";
+
 		case 0x52E99DA3:
 			return "GlossA_floatVal";
+
 		case 0xB9DE26A0:
 			return "GlossB_floatVal";
+
 		case 0x7E88DE7D:
 			return "ClearCoatGloss_floatVal";
 
 		case 0x00CE7933: // badge_ch1difnormglossao
 			return "NormalSpecPower";
+
 		case 0x7A549CB2:
 			return "DiffuseDarkeningMaxPorosity_floatVal_basewaterbeading_nonclearcoat";
 
@@ -259,16 +323,22 @@ namespace fmnext
 
 		case 0x18385024: // clc_metalch2normalch1mask
 			return "RainUVScale_floatVal_basewaterbeading_uvrot";
+
 		case 0xE58ABE7B:
 			return "DirectionalFalloff_Offset_floatVal_basewaterbeading_uvrot";
+
 		case 0x09A23168:
 			return "DirectionalFalloff_Tightness_floatVal_basewaterbeading_uvrot";
+
 		case 0x2DB53178:
 			return "FlakeGlossDmg_floatVal";
+
 		case 0x6F45C5F1:
 			return "EmissiveType_floatVal";
+
 		case 0x1364DE85:
 			return "pgModEV_floatVal";
+
 		case 0xF9F19BA6:
 			return "PartDamageThreshold_floatVal";
 
@@ -283,11 +353,22 @@ namespace fmnext
 		case 0xD5F1D09E: // ch1ch2normlerpch1glossdiff
 			return "CH2NormalHeightScale";
 
+		case 0xF94165FE: // car_cf_embossed_interior
+			return "CH1_CLCNormalMap0HeightScale";
+
+		case 0x8F731786: // car_cf_embossed_interior
+			return "RainUVScale_floatVal_basewaterbeading_interior";
+
+		case 0x6F3A994F:
+			return "AllowUseColorBool";
+
 			// int
 		case 0x5393C778: // carpaint_standard
 			return "radFunction1CarLightParam_pg_radiosity";
+
 		case 0xE007EABB:
 			return "radFunction2CarLightParam_pg_radiosity";
+
 		case 0x8E8BF1FA:
 			return "radFunction3CarLightParam_pg_radiosity";
 
@@ -297,64 +378,88 @@ namespace fmnext
 			// bool
 		case 0x9615CAAA: // carpaint_standard
 			return "UniqueBaseTextureSwitchBool";
+
 		case 0x78004A9C:
 			return "ColorGroupSwitchBool";
+
 		case 0xD047A271:
 			return "UseDiffuseAlphaBool";
+
 		case 0x7169AC81:
 			return "CH1DiffuseTextureSwitchBool";
+
 		case 0xE1D827FD:
 			return "UniqueBaseColorSwitchBool";
+
 		case 0xFF73057F:
 			return "LiverySwitchBool";
+
 		case 0x9A8DF740:
 			return "DamageSwitchBool";
+
 		case 0x61730CD3:
 			return "ScrapeSwitchBool";
+
 		case 0xF03E432F:
 			return "FlakeMaskSwitchBool";
+
 		case 0x76C4A90E:
 			return "CH1NormalSwitchBool";
+
 		case 0xE159D67B:
 			return "CH1AlphaSwitchBool";
 
 		case 0xE4AAD859: // carpaint_standard_glossmask
 			return "FlakeGlossMaskBool";
+
 		case 0x9554D18D:
 			return "GlossMaskSwitchBool";
 
 		case 0x05A401E7: // badge_clc_diffusemetallerpch1masknorm
 			return "DiffuseTextureSwitchBool";
+
 		case 0x08B2C17F:
 			return "CH1MaskSwitchBool";
+
 		case 0xCBB3D988:
 			return "CH1OpacitySwitchBool";
 
 		case 0x04F8F9FA: // badge_ch1difnormglossao
 			return "CH1DiffColTextureSwitchBool";
+
 		case 0x0F70E9CC:
 			return "RTintMaskSwitchBool";
+
 		case 0x71263EB7:
 			return "CH1F0MaskSwitchBool";
+
 		case 0x5A0DA36A:
 			return "CH1GlossMaskSwitchBool";
+
 		case 0xE876DDCC:
 			return "CH1LocalAOSwitchBool";
+
 		case 0xFE5BAD37:
 			return "CH1LocalAOSwitch0Bool";
+
 		case 0xA6BF15E8:
 			return "CH1OpacityMaskSwitchBool";
 
 		case 0x4E3A085E: // clc_metalch2normalch1mask
 			return "RTintTextureSwitchBool";
+
 		case 0x6C03F944:
 			return "LocalAOSwitchBool";
+
 		case 0x255EF28A:
 			return "CH2NormalSwitchBool";
+
 		case 0x07ACB91F:
 			return "RGBMapSwitchBool";
+
 		case 0x0BF3318B:
 			return "EmissiveOnOffBool";
+
 		case 0xE5BC49CB:
 			return "AlphaSwitchBool";
 
@@ -368,16 +473,22 @@ namespace fmnext
 
 		case 0x6F80D6E1: // m_ch2normglossalphaemissive
 			return "CH2RTintMaskSwitchBool";
+
 		case 0x22BC6533:
 			return "CH2F0MaskSwitchBool";
+
 		case 0xFA9429D7:
 			return "CH2NormalMapSwitchBool";
+
 		case 0xF5A4EEA0:
 			return "CH2GlossMaskSwitchBool";
+
 		case 0x02F000AE:
 			return "CH2LocalAOSwitchBool";
+
 		case 0x2B935F14:
 			return "CH2DirectAOSwitchBool";
+
 		case 0x9FC7B8A8:
 			return "CH2OpacityMaskSwitchBool";
 
@@ -386,69 +497,101 @@ namespace fmnext
 
 		case 0x56DD9628: // ch1ch2normlerpch1glossdiff
 			return "CH1DiffuseLERPSwitchBool";
+
 		case 0x88C5D9BD:
 			return "CH1DirectAOSwitchBool";
+
+		case 0x48287560: // car_cf_embossed_interior
+			return "ClearCoatNormalSwitch0Bool";
+
+		case 0x22819153:
+			return "DialRadiositySwitchBool_dialRadiosity";
 
 			// SRV Texture
 		case 0x66E53F62: // carpaint_standard
 			return "CH1AlphaTextureTexture";
+
 		case 0x10350BBC:
 			return "CH1DiffuseTextureTexture";
+
 		case 0x5BB7DA76:
 			return "CH1NormalTexture";
+
 		case 0xB59BE3AB:
 			return "FlakeNormalTexture";
+
 		case 0x8F186353:
 			return "HighNoiseTextureTexture_surfaceFX_snow_surfaceFX";
+
 		case 0x26169D54:
 			return "LowNoiseTextureTexture_surfaceFX_snow_surfaceFX";
+
 		case 0x8B653400:
 			return "MudTileDirectionalLeftTexture_surfaceFX_opus_surfaceFX";
+
 		case 0x154A5458:
 			return "MudTileNonDirectionalTexture_surfaceFX_opus_surfaceFX";
+
 		case 0x5F37B059:
 			return "NormalMapWithIntensityTexture";
+
 		case 0xD7D2D75D:
 			return "NormalMapWithIntensityTexture_surfaceFX_opus_surfaceFX";
+
 		case 0x8382A669:
 			return "NormalMapWithIntensityTexture_surfaceFX_snow_surfaceFX";
+
 		case 0x7B683AC5:
 			return "OrangePeelTexture";
+
 		case 0x99EE46B6:
 			return "radTextureTexture_pg_radiosity";
+
 		case 0x9D396DAD:
 			return "SnowDiffuseTextureTexture_surfaceFX_snow_surfaceFX";
+
 		case 0xCA80B33B:
 			return "TexLowFrequencyNoiseTexture_surfaceFX_opus_surfaceFX";
+
 		case 0x16F462B7:
 			return "TextureTexture";
+
 		case 0x05EECB86:
 			return "TextureWetnessEdgeTexture_surfaceFX_opus_surfaceFX";
+
 		case 0x51BEBAB2:
 			return "TextureWetnessEdgeTexture_surfaceFX_snow_surfaceFX";
 
 		case 0x3380008B: // badge_clc_diffusemetallerpch1masknorm
 			return "CH1MaskTexture";
+
 		case 0x6DD98CD9:
 			return "DiffuseATexture";
+
 		case 0x8C658791:
 			return "NormalTexture";
 
 		case 0x7E4A41E1: // badge_ch1difnormglossao
 			return "GlossTexture";
+
 		case 0x7FDA2F1B:
 			return "LocalAOTexture";
+
 		case 0x220CAD2C:
 			return "RTintTexture";
 
 		case 0x57D9D49E: // clc_metalch2normalch1mask
 			return "AlphaTexture";
+
 		case 0x294DA6FC:
 			return "CH2DiffuseTextureTexture";
+
 		case 0x4049C803:
 			return "CH2RTintTexture";
+
 		case 0x35C82561:
 			return "LightMapTexture";
+
 		case 0x64C94C50:
 			return "SplatterYTexture";
 
@@ -457,29 +600,43 @@ namespace fmnext
 
 		case 0x0FEA383B: // ch1ch2normlerpch1glossdiff
 			return "AOTexture";
+
 		case 0x022DF609:
 			return "CH1GlossDiffMaskTexture";
+
 		case 0x3A72873C:
 			return "CH1NormalMaskTexture";
+
 		case 0x27D6FFAD:
 			return "CH2NormalTexture";
+
+		case 0x3C929217: // car_cf_embossed_interior
+			return "CH1_CLCNormalMap0Texture";
+
+		case 0xA27F63E2: // car_window_interior
+			return "ShatterMapTexture";
 
 			// Sampler
 		case 0xF01369AD: // carpaint_standard
 			return "SamplerStatesLiverySampler";
+
 		case 0x41359340:
 			return "SamplerStatesSampler_pg_radiosity";
+
 		case 0xB74664B2:
 			return "SamplerStatesSampler_surfaceFX";
 
 		case 0xEEACBDFB: // badge_clc_diffusemetallerpch1masknorm
 			return "pgSamplerStatesSampler";
 
-			//case 0xF1163FB5: // badge_ch1difnormglossao
-			//    return ""; // unknown
+		case 0xF1163FB5: // badge_ch1difnormglossao
+			return "SamplerStatesSampler_basewaterbeading_nonclearcoat";
 
 		case 0xA8B882A2: // ch2diffnormglossalphaemissive
 			return "SamplerStatesSampler";
+
+		case 0x80846FBD: // car_cf_embossed_interior
+			return "SamplerStatesSampler_dialRadiosity";
 		}
 
 		return "null";
