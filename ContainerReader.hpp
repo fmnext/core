@@ -22,7 +22,7 @@ namespace fmnext
 		ContainerReader() = default;
 		~ContainerReader() = default;
 
-		ContainerReader(const std::string& file) : m_file(file) {
+		ContainerReader(const std::string& file) : m_file(file), m_file_name(m_file.stem().string()) {
 			int err;
 			container = zip_open(file.c_str(), 0, &err);
 
@@ -39,16 +39,14 @@ namespace fmnext
 		std::vector<std::string> getMediaTireEntries()
 		{
 			std::vector<std::string> result{};
-			result.reserve(zip_get_num_entries(container, ZIP_FL_UNCHANGED));
 
 			for (int id = 0; id < zip_get_num_entries(container, ZIP_FL_UNCHANGED); ++id)
 			{
 				std::string entry_name(zip_get_name(container, id, ZIP_FL_UNCHANGED));
+				std::string input_name(m_file_name.begin() + 5, m_file_name.end());
 
 				std::smatch match_result{};
-				std::regex_search(entry_name, match_result, std::regex(".modelbin", std::regex_constants::icase));
-
-				if (!match_result.empty())
+				if (std::regex_search(entry_name, match_result, std::regex(input_name + ".modelbin", std::regex_constants::icase)))
 				{
 					result.push_back(entry_name);
 
@@ -332,6 +330,7 @@ namespace fmnext
 	private:
 		zip* container = nullptr;
 		std::filesystem::path m_file;
+		std::string m_file_name;
 	};
 
 }
