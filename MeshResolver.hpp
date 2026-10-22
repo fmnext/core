@@ -24,6 +24,7 @@ namespace fmnext
             //uint8_t requested_lod = 0; // LODS, LOD0, LOD1, ...
             int requested_render_pass = 0xFFFF; // empty: 1 << 1, max : 1 << 5
             bool use_normals = true;
+            bool use_vertexcolors = true;
             bool hide_decal_transparent_pass = false;
 
             for (auto& entry : m_bundle->Meshes)
@@ -83,7 +84,7 @@ namespace fmnext
                 std::vector<DirectX::XMFLOAT3> normals{};
                 std::vector<std::vector<DirectX::XMFLOAT2>> uvs(5);
                 std::vector<std::vector<DirectX::XMVECTOR>> tangents(5);
-                std::vector<std::vector<DirectX::XMVECTOR>> colors(5);
+                std::vector<std::vector<DirectX::XMFLOAT4>> colors(5);
 
                 // Internals
                 std::vector<DirectX::XMFLOAT3> v1_vertices{};
@@ -298,6 +299,7 @@ namespace fmnext
 
                 vertices.reserve(entry.mesh.vertices_count);
                 normals.reserve(entry.mesh.vertices_count);
+                colors.reserve(entry.mesh.vertices_count);
 
                 for (auto it = v2_uvs.begin(); it != v2_uvs.end(); ++it)
                 {
@@ -340,6 +342,19 @@ namespace fmnext
                             float n_z = v2_normals[vertex_id].y;
 
                             normals.emplace_back(n_x, n_y, n_z);
+                        }
+                    }
+
+                    if (use_vertexcolors)
+                    {
+                        for (size_t i = 0; i < colors.size() && !v2_colors[i].empty(); ++i)
+                        {
+                            float vcx = DirectX::XMVectorGetX(v2_colors[i][vertex_id]);
+                            float vcy = DirectX::XMVectorGetY(v2_colors[i][vertex_id]);
+                            float vcz = DirectX::XMVectorGetZ(v2_colors[i][vertex_id]);
+                            float vcw = DirectX::XMVectorGetW(v2_colors[i][vertex_id]);
+
+                            colors[i].emplace_back(vcx, vcy, vcz, vcw);
                         }
                     }
 
@@ -486,7 +501,7 @@ namespace fmnext
                 v2_colors.clear();
                 v2_weights.clear();
 
-                m_meshes.emplace_back(std::any_cast<std::string>(entry.metadata["Name"]), matrix, (m_geometry_type == QUADS) ? convertToQuads(indices) : indices, vertices, normals, uvs, entry.mesh.material_id.value()); //"polySurface"
+                m_meshes.emplace_back(std::any_cast<std::string>(entry.metadata["Name"]), matrix, (m_geometry_type == QUADS) ? convertToQuads(indices) : indices, vertices, normals, uvs, colors, entry.mesh.material_id.value(), m_bundle->Skeleton[entry.mesh.bone_index].name); //"polySurface"
             }
         }
 

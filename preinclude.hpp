@@ -72,8 +72,8 @@ namespace fmnext
     struct Mesh
     {
         Mesh() = default;
-        Mesh(std::string name, DirectX::XMMATRIX matrix, std::vector<uint32_t> indices, std::vector<DirectX::XMFLOAT3> vertices, std::vector<DirectX::XMFLOAT3> normals, std::vector<std::vector<DirectX::XMFLOAT2>> uvs, int16_t material_index) :
-            name(name), matrix(matrix), indices(indices), vertices(vertices), normals(normals), uvs(uvs), material_index(material_index) {
+        Mesh(std::string name, DirectX::XMMATRIX matrix, const std::vector<uint32_t>& indices, const std::vector<DirectX::XMFLOAT3>& vertices, const std::vector<DirectX::XMFLOAT3>& normals, const std::vector<std::vector<DirectX::XMFLOAT2>>& uvs, const std::vector<std::vector<DirectX::XMFLOAT4>>& colors, int16_t material_index, const std::string& bone_name) :
+            name(name), matrix(matrix), indices(indices), vertices(vertices), normals(normals), uvs(uvs), colors(colors), material_index(material_index), bone_name(bone_name) {
         }
 
         //Mesh(const Mesh& other) : name(other.name), matrix(other.matrix), indices(other.indices), vertices(other.vertices), normals(other.normals), uvs(other.uvs), material_index(other.material_index)
@@ -91,7 +91,9 @@ namespace fmnext
         std::vector<DirectX::XMFLOAT3> vertices{};
         std::vector<DirectX::XMFLOAT3> normals{};
         std::vector<std::vector<DirectX::XMFLOAT2>> uvs{};
+        std::vector<std::vector<DirectX::XMFLOAT4>> colors{};
         int16_t material_index{};
+        std::string bone_name{};
     };
 
 }
