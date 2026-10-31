@@ -299,7 +299,6 @@ namespace fmnext
 
                 vertices.reserve(entry.mesh.vertices_count);
                 normals.reserve(entry.mesh.vertices_count);
-                colors.reserve(entry.mesh.vertices_count);
 
                 for (auto it = v2_uvs.begin(); it != v2_uvs.end(); ++it)
                 {
@@ -308,6 +307,16 @@ namespace fmnext
                     if (!it->empty())
                     {
                         uvs[index].reserve(entry.mesh.vertices_count);
+                    }
+                }
+
+                for (auto it = v2_colors.begin(); it != v2_colors.end(); ++it)
+                {
+                    int64_t index = std::distance(v2_colors.begin(), it);
+
+                    if (!it->empty())
+                    {
+                        colors[index].reserve(entry.mesh.vertices_count);
                     }
                 }
 
@@ -349,12 +358,12 @@ namespace fmnext
                     {
                         for (size_t i = 0; i < colors.size() && !v2_colors[i].empty(); ++i)
                         {
-                            float vcx = DirectX::XMVectorGetX(v2_colors[i][vertex_id]);
-                            float vcy = DirectX::XMVectorGetY(v2_colors[i][vertex_id]);
-                            float vcz = DirectX::XMVectorGetZ(v2_colors[i][vertex_id]);
-                            float vcw = DirectX::XMVectorGetW(v2_colors[i][vertex_id]);
+                            float vc_r = DirectX::XMVectorGetX(v2_colors[i][vertex_id]);
+                            float vc_g = DirectX::XMVectorGetY(v2_colors[i][vertex_id]);
+                            float vc_b = DirectX::XMVectorGetZ(v2_colors[i][vertex_id]);
+                            float vc_a = DirectX::XMVectorGetW(v2_colors[i][vertex_id]);
 
-                            colors[i].emplace_back(vcx, vcy, vcz, vcw);
+                            colors[i].emplace_back(vc_r, vc_g, vc_b, vc_a);
                         }
                     }
 
