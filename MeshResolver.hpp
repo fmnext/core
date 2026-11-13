@@ -103,12 +103,26 @@ namespace fmnext
                 auto& index_buffer = m_bundle->IndexBuffers[entry.mesh.index_buffer_id];
                 if (!index_buffer.Buffer.empty())
                 {
-                    indices.resize(entry.mesh.indexes_count);
-
                     auto front = index_buffer.Buffer.data() + (entry.mesh.start_index * index_buffer.stride);
                     auto back = entry.mesh.indexes_count * index_buffer.stride;
 
-                    std::memcpy(indices.data(), front, back);
+                    if (index_buffer.stride == sizeof(uint16_t))
+                    {
+                        indices.reserve(entry.mesh.indexes_count);
+
+                        std::vector<uint16_t> ind16;
+                        ind16.resize(entry.mesh.indexes_count);
+                        std::memcpy(ind16.data(), front, back);
+
+                        std::for_each(ind16.begin(), ind16.end(), [&](auto& n) { indices.emplace_back(n); });
+                    }
+
+                    if (index_buffer.stride == sizeof(uint32_t))
+                    {
+                        indices.resize(entry.mesh.indexes_count);
+
+                        std::memcpy(indices.data(), front, back);
+                    }
                 }
 
                 uint32_t vertex_id_min = 0xffffffff;
